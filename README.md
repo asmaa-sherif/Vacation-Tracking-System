@@ -150,7 +150,7 @@ FUNCTION CreateVacationRequest(employeeID, startDate, endDate, title, descriptio
     END IF
     
     // Step 2: Check Employee's Available Vacation Balance
-    balance = CheckVacationBalance(employeeID, categoryID)
+    balance = CheckVacationBalance(request.employeeID, request.categoryID)
     
     // Step 3: Validate if the employee has sufficient balance for the request
     IF balance < CalculateDays(startDate, endDate) THEN
@@ -168,7 +168,7 @@ FUNCTION CreateVacationRequest(employeeID, startDate, endDate, title, descriptio
         "endDate": endDate,
         "title": title,
         "description": description,
-        "status": "Pending",  // Initially, status is "Pending"
+        "status": "Pending",  
         "categoryID": categoryID
     })
 
@@ -192,7 +192,7 @@ FUNCTION EditVacationRequest(requestID, newStartDate, newEndDate, newTitle, newD
 
     // Step 2: Check for sufficient vacation balance after the new dates
     balance = CheckVacationBalance(currentRequest.employeeID, currentRequest.categoryID)
-    IF balance < CalculateDays(newStartDate, newEndDate) THEN
+    IF balance < CalculateDays(request.newStartDate, request.newEndDate) THEN
         RETURN "Error: Insufficient balance"
     END IF
 
