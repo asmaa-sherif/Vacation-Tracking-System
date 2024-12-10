@@ -1,6 +1,6 @@
 # Vacation-Tracking-System
 
-A system designed to simplify employee vacation requests and leave management, ensuring efficiency for employees and managers.
+The Vacation Sysytem Idea is presented in the Object Oriented Analysis And Design textbook(https://www.oreilly.com/library/view/object-oriented-analysis-and/9780201895513/), 3rd edition. I worked on designing the system workflow and defining its use cases in detail including Flow diagrams, Sequence diagram, and ERD diagrams.
 
 ---
 
@@ -30,6 +30,7 @@ A system designed to simplify employee vacation requests and leave management, e
 > Provide an intuitive platform for managing vacation, sick leave, and personal time off, minimizing HR involvement.
 
 ### Goals
+> The system has the potential to save time and money mostly in the HR department
 1. Empower employees to manage leave requests independently.
 2. Reduce HR and managerial workloads.
 3. Deliver a user-friendly, efficient system.
