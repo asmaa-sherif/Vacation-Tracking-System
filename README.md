@@ -1,6 +1,6 @@
 # Vacation-Tracking-System
 
-The Vacation System Idea is presented in <a href="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Object_Oriented_Analysis_and_Design_with_Applications_3rd_Edition.pdf" style="text-decoration:none; font-weight:bold;">The Object Oriented Analysis And Design textbook, 3rd edition.</a> I worked on designing the system workflow and defining its use cases in detail including Flow diagrams, Sequence diagram, and ERD diagrams.
+The Vacation System Idea is presented in [The Object Oriented Analysis And Design textbook, 3rd edition](https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Object_Oriented_Analysis_and_Design_with_Applications_3rd_Edition.pdf). I worked on designing the system workflow and defining its use cases in detail, including Flow Diagrams, Sequence Diagrams, and ERD diagrams.
 
 ---
 
@@ -30,7 +30,7 @@ The Vacation System Idea is presented in <a href="https://github.com/asmaa-sheri
 > Provide an intuitive platform for managing vacation, sick leave, and personal time off, minimizing HR involvement.
 
 ### Goals
-> The system has the potential to save time and money mostly in the HR department
+> The system has the potential to save time and money mostly in the HR department.
 1. Empower employees to manage leave requests independently.
 2. Reduce HR and managerial workloads.
 3. Deliver a user-friendly, efficient system.
@@ -83,18 +83,18 @@ The Vacation System Idea is presented in <a href="https://github.com/asmaa-sheri
 ### Manage Time Use Case
 
 #### Main Flow
- 1. The employee login to the VTS through the company portal.
- 2. The VTS shows the employee's current vacation balance and any pervious request.
- 3. The employee chooses to create new vacation request.
- 4. The employee selects the type of leave they want to use [Vacation, personal, sick] and selects date on a calender.
- 5. The employee enters the required details, such as start date, end date, title, short description.
+ 1. The employee logs into the VTS through the company portal.
+ 2. The VTS shows the employee's current vacation balance and any previous requests.
+ 3. The employee chooses to create a new vacation request.
+ 4. The employee selects the type of leave they want to use [Vacation, personal, sick] and selects dates on a calendar.
+ 5. The employee enters the required details, such as start date, end date, title, and a short description.
  6. The employee submits the request.
  7. If there are any errors, the system highlights them and asks the employee to fix them.
  8. If the request is correct, it is sent for manager approval.
  9. The employee is returned to the VTS home page.
- 10. an email is immediately sent to authorized manager to approve the employee's request.
- 11. The request status should be update to "Pending".
- 12. The manager reponds to the email by clicking on a link 
+ 10. An email is immediately sent to the authorized manager to approve the employee's request.
+ 11. The request status is updated to "Pending."
+ 12. The manager responds to the email by clicking on a link to approve or reject the request.
 
 #### Alternative Flows
 1. **Withdraw Request**: Remove pending request, notify the manager.
@@ -120,7 +120,7 @@ The Vacation System Idea is presented in <a href="https://github.com/asmaa-sheri
 ### Sequence Diagram
 | <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Sequence%20diagram.png" width="100%" />
 | --------------------------------------------------------------- |
-|**Sequence Diagram**|
+| **Sequence Diagram** |
 
 ---
 
@@ -128,39 +128,146 @@ The Vacation System Idea is presented in <a href="https://github.com/asmaa-sheri
 
 | <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Database%20Diagrams/ERD%20Diagram.png" width="75%" />|
 | --------------------------------------------------------------- |
-|**Entity-Relationship Diagram**|
+| **Entity-Relationship Diagram**|
 
 | <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Database%20Diagrams/Entities.png" width="75%" />|
 | --------------------------------------------------------------- |
-|**Entities Diagram**|
+| **Entities Diagram** |
 
 ---
 
-## PseudoCode
+## Pseudocode
 
-### Vacation Request
-1. Check employee balance and input validity.
-2. Submit request for manager approval.
+### **Vacation Request**
 
-<p float="left">
-  <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/pseudocode/Vacation%20Request.png" width="75%" />
-</p>
+#### **Create Vacation Request**
+```plaintext
+FUNCTION CreateVacationRequest(employeeID, startDate, endDate, title, description, categoryID):
 
-### Other Operations
-1. **Withdraw Request**: Remove request, notify the manager.
-2. **Cancel Request**: Restore balance, notify the manager.
-3. **Edit Request**: Validate and update details.
+    // Step 1: Authentication Check
+    IF NOT IsAuthenticated(employeeID) THEN
+        RETURN "Error: User not authenticated"
+    END IF
+    
+    // Step 2: Check Employee's Available Vacation Balance
+    balance = CheckVacationBalance(employeeID, categoryID)
+    
+    // Step 3: Validate if the employee has sufficient balance for the request
+    IF balance < CalculateDays(startDate, endDate) THEN
+        RETURN "Error: Insufficient balance"
+    END IF
 
-<p float="left">
-  <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/pseudocode/Withdraw%20Request.png" width="30%" />
-  <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/pseudocode/Cancel%20Request%20.png" width="30%" />
-  <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/pseudocode/Edit%20Request.png" width="30%" />
-</p>
+    // Step 4: Generate a unique Request ID for the new vacation request
+    requestID = GenerateNewRequestID()
 
----
+    // Step 5: Save the new vacation request to the database
+    SaveToDatabase("VacationRequest", {
+        "requestID": requestID,
+        "employeeID": employeeID,
+        "startDate": startDate,
+        "endDate": endDate,
+        "title": title,
+        "description": description,
+        "status": "Pending",  // Initially, status is "Pending"
+        "categoryID": categoryID
+    })
+
+    // Step 6: Notify the manager about the new vacation request for approval
+    NotifyManager(employeeID, requestID)
+
+    // Step 7: Return a success message
+    RETURN "Vacation request submitted successfully"
+END FUNCTION
+
+```
+#### **Edit a Pending Vacation Request**
+```plaintext
+FUNCTION EditVacationRequest(requestID, newStartDate, newEndDate, newTitle, newDescription):
+
+    // Step 1: Retrieve the current request details
+    currentRequest = GetRequestFromDatabase(requestID)
+    IF currentRequest.status != "Pending" THEN
+        RETURN "Error: Only pending requests can be edited"
+    END IF
+
+    // Step 2: Check for sufficient vacation balance after the new dates
+    balance = CheckVacationBalance(currentRequest.employeeID, currentRequest.categoryID)
+    IF balance < CalculateDays(newStartDate, newEndDate) THEN
+        RETURN "Error: Insufficient balance"
+    END IF
+
+    // Step 3: Update the request with new details
+    currentRequest.startDate = newStartDate
+    currentRequest.endDate = newEndDate
+    currentRequest.title = newTitle
+    currentRequest.description = newDescription
+
+    // Step 4: Save the updated request to the database
+    SaveToDatabase("VacationRequest", currentRequest)
+
+    // Step 5: Notify the manager about the edit
+    NotifyManager(currentRequest.employeeID, requestID)
+
+    // Step 6: Return a success message
+    RETURN "Vacation request updated successfully"
+END FUNCTION
+```
+
+#### **Cancel an Approved Vacation Request**
+```plaintext
+FUNCTION CancelVacationRequest(requestID):
+
+    // Step 1: Retrieve the current request details
+    currentRequest = GetRequestFromDatabase(requestID)
+    IF currentRequest.status != "Approved" THEN
+        RETURN "Error: Only approved requests can be canceled"
+    END IF
+
+    // Step 2: Restore the employee's vacation balance
+    balanceRestored = RestoreVacationBalance(currentRequest.employeeID, currentRequest.categoryID, CalculateDays(currentRequest.startDate, currentRequest.endDate))
+
+    // Step 3: Update request status to "Canceled"
+    currentRequest.status = "Canceled"
+    
+    // Step 4: Save the updated request to the database
+    SaveToDatabase("VacationRequest", currentRequest)
+
+    // Step 5: Notify the manager about the cancellation
+    NotifyManager(currentRequest.employeeID, requestID)
+
+    // Step 6: Return a success message
+    RETURN "Vacation request canceled and balance restored"
+END FUNCTION
+```
+#### **Withdraw Pending Vacation Request**
+```plaintext
+FUNCTION WithdrawVacationRequest(requestID):
+
+    // Step 1: Retrieve the current request details
+    currentRequest = GetRequestFromDatabase(requestID)
+    IF currentRequest.status != "Pending" THEN
+        RETURN "Error: Only pending requests can be withdrawn"
+    END IF
+
+    // Step 2: Update request status to "Withdrawn"
+    currentRequest.status = "Withdrawn"
+    
+    // Step 3: Save the updated request to the database
+    SaveToDatabase("VacationRequest", currentRequest)
+
+    // Step 4: Notify the manager about the withdrawal
+    NotifyManager(currentRequest.employeeID, requestID)
+
+    // Step 5: Return a success message
+    RETURN "Vacation request withdrawn successfully"
+END FUNCTION
+
+```
 
 ## Tools Used
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Plant UML](https://plantuml.com/)
 - [ExcaliDraw](https://excalidraw.com/)
-- [DB Diagram](https://dbdiagram.io/home)
+- [DB Diagram](https://dbdiagram.io/home).
+
+
