@@ -126,7 +126,7 @@ The Vacation System Idea is presented in [The Object Oriented Analysis And Desig
 
 ## Database Design
 
-| <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Database%20Diagrams/ERD%20Diagram.png" width="75%" />|
+| <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/ERD%20Diagram.png" />|
 | --------------------------------------------------------------- |
 | **Entity-Relationship Diagram**|
 
