@@ -105,7 +105,7 @@ A system designed to simplify employee vacation requests and leave management, e
 ### Flow Diagrams
 
 #### Main Flow
-<img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Flow%20chart/Use%20case%20flow%20chart.png" width="50%" />
+<img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Flow%20chart/Use%20case%20flow%20chart.png" width="75%" />
 
 #### Alternative Flows
 <p float="left">
@@ -125,11 +125,11 @@ A system designed to simplify employee vacation requests and leave management, e
 
 ## Database Design
 
-| <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Database%20Diagrams/ERD%20Diagram.png" width="50%" />|
+| <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Database%20Diagrams/ERD%20Diagram.png" width="75%" />|
 | --------------------------------------------------------------- |
 |**Entity-Relationship Diagram**|
 
-| <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Database%20Diagrams/Entities.png" width="50%" />|
+| <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Database%20Diagrams/Entities.png" width="75%" />|
 | --------------------------------------------------------------- |
 |**Entities Diagram**|
 
@@ -142,7 +142,7 @@ A system designed to simplify employee vacation requests and leave management, e
 2. Submit request for manager approval.
 
 <p float="left">
-  <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/pseudocode/Vacation%20Request.png" width="50%" />
+  <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/pseudocode/Vacation%20Request.png" width="75%" />
 </p>
 
 ### Other Operations
