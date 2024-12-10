@@ -117,7 +117,7 @@ A system designed to simplify employee vacation requests and leave management, e
 ---
 
 ### Sequence Diagram
-| <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Sequence%20diagram.png" width="50%" />
+| <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Sequence%20diagram.png" width="100%" />
 | --------------------------------------------------------------- |
 |**Sequence Diagram**|
 
