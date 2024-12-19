@@ -5,115 +5,144 @@ The Vacation System Idea is presented in [The Object Oriented Analysis And Desig
 ---
 
 ## Table of Contents
-1. [Requirements](#requirements)
+1. [Overview](#overview)
+   - [Domain](#domain)
    - [Vision](#vision)
    - [Goals](#goals)
    - [Functional Requirements](#functional-requirements)
    - [Non-Functional Requirements](#non-functional-requirements)
    - [Constraints](#constraints)
    - [Assumptions](#assumptions)
-2. [Use Cases](#use-cases)
-   - [Manage Time Use Case](#manage-time-use-case)
-     - [Main Flow](#main-flow)
-     - [Alternative Flows](#alternative-flows)
-     - [Flow Diagrams](#flow-diagrams)
-     - [Sequence Diagram](#sequence-diagram)
-     - [Database Design](#database-design)
-     - [PseudoCode](#pseudocode)
-3. [Tools Used](#tools-used)
+   - [Actors](#actors)
+   - [Use Cases](#use-cases)
+   - [Flow Charts](#flow-charts)
+   - [Use Cases Examples](#use-cases-examples)
+2. [Data Model](#data-model)
+3. [UI](#ui)
+4. [Tools Used](#tools-used)
 
 ---
 
 ## Requirements
 
+### Domain
+Managers struggle to effectively manage and stay aware of their employees' vacation schedules.
+
+---
+
+
 ### Vision
-> Provide an intuitive platform for managing vacation, sick leave, and personal time off, minimizing HR involvement.
+A Vacation Tracking System (VTS) will provide individual employees with the capability to manage their own vacation time, sick leave, and personal time off,
+without having to be an expert in company policy or the local facility’s leave policies.
+
+---
 
 ### Goals
-> The system has the potential to save time and money mostly in the HR department.
+Give individual employees the capability and responsibility to manage this particular aspect of their employment agreements with the company.
 1. Empower employees to manage leave requests independently.
 2. Reduce HR and managerial workloads.
-3. Deliver a user-friendly, efficient system.
+3. Deliver an easy to use, intuitive, and intelligent system.
+
+---
 
 ### Functional Requirements
-1. **Request Management**: Validate, verify, and manage leave requests.
-2. **Manager Approval**: Enable flexible approval settings.
-3. **Historical Access**: Allow access to past and future requests.
-4. **Notifications**: Notify employees and managers about request updates.
-5. **Integration**: Interface with existing systems and support SSO.
-6. **Activity Logs**: Maintain detailed audit logs.
-7. **HR/Admin Control**: Enable override and personal leave management.
+**Employee**:
+   - Can validate, verify, and manage leave requests.
+   - Can edit or withdraw pending requests and cancel approved request.
+   - Can access to requests for the previous calendar year,and allows requests to be made up to a year and a half in the future.
+     
+**Manager Approval**:
+   - Enable flexible approval settings.
+   - Award personal leave time.
+     
+**HR Clerk**:
+   - Enable override all actions restricted by rules, with logging of those overrides.
+     
+**System Administrators**:
+   - Maintain system logs and ensure smooth technical operations.
+     
+**Notifications**:
+   - Notify managers about request updates.
+   - Notify employees of request status changes.
+     
+**Integration**:
+   - Using the portal’s single-sign-on mechanisms for all authentication.
+   - Intergrate HR department legacy systems to retrieve required employee information and changes.
+   
+**Activity Logs**:
+   - Maintain detailed audit logs.
+
+---
 
 ### Non-Functional Requirements
-1. **Performance**: Handle high traffic efficiently.
-2. **Scalability**: Support future growth.
-3. **Security**: Ensure data privacy and secure authentication.
-4. **Usability**: Provide an intuitive interface.
-5. **Availability**: Offer 24/7 access with minimal downtime.
-6. **Auditability**: Log all actions for tracking purposes.
+**Scalability**: Support future growth.
+     
+**Security**: Ensure data privacy and secure authentication.
+     
+**Usability**: Provide an intuitive and easy to use interface.
+     
+**Auditability**: Log all actions for tracking purposes.
+
+---
 
 ### Constraints
-1. Must integrate with current systems (intranet, HR legacy).
-2. Comply with legal and privacy regulations.
+- Must integrate with current systems (intranet portal, HR legacy).
+- Comply with legal and privacy regulations.
+- The system uses existing intranet hardware and middleware.
+
+---
 
 ### Assumptions
-1. Accurate data from HR systems.
-2. Employees have internet and SSO access.
-3. Company policies are pre-defined and integrated.
+- Accurate data from HR systems.
+- Employees have internet and single-sign-on access.
+- Company policies are pre-defined and integrated.
 
 ---
 
 ## Use Cases
 - [x] Manage Time [create new Request, Edit pending request, withdraw request, cancel Approved Request]
-- [ ] Award Time
-- [ ] Edit Employee Record
-- [ ] Manage Locations
-- [ ] Manage Leave categories
-- [ ] Override Leave records
-- [ ] Backup system Logs
+- [ ] Approve Request [Managers review and respond to leave requests]
+- [ ] Award Time [Managers grant additional leave time within limits]
+- [ ] Edit Employee Record [HR clerks modify employee details, allowances, or leave rules]
+- [ ] Manage Locations [HR clerks handle location-specific policies and restrictions]
+- [ ] Manage Leave categories [HR clerks manage leave types and associated rules]
+- [ ] Override Leave records [HR clerks override automated decisions while maintaining logs]
+- [ ] Backup system Logs [Administrators archive system transaction logs]
+
+---
+
+<img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Use%20Case%20Model.png" width="85%" />
+
+---
 
 ### Actors
-1. **Employee**: Manage vacation requests.
-2. **Manager**: Approve/refuse requests, award time.
-3. **HR Clerk**: Edit records, manage categories.
-4. **System Admin**: Backup logs.
+**_Employee_**
+   - Manage vacation requests.
+   - Submits, withdraws, or edits vacation requests.
+     
+**_Manager_**
+   - Approve/refuse requests.
+   - Award additional leave.
 
+**_HR Clerk_**
+   - Manages employee records, rules, and overrides.
+   - Ensures the system reflects updated policies.
+     
+**_System Admin_**
+   - Manages technical resources, backups, and logs.
 ---
 
-### Manage Time Use Case
+### Flow Diagram
 
-#### Main Flow
- 1. The employee logs into the VTS through the company portal.
- 2. The VTS shows the employee's current vacation balance and any previous requests.
- 3. The employee chooses to create a new vacation request.
- 4. The employee selects the type of leave they want to use [Vacation, personal, sick] and selects dates on a calendar.
- 5. The employee enters the required details, such as start date, end date, title, and a short description.
- 6. The employee submits the request.
- 7. If there are any errors, the system highlights them and asks the employee to fix them.
- 8. If the request is correct, it is sent for manager approval.
- 9. The employee is returned to the VTS home page.
- 10. An email is immediately sent to the authorized manager to approve the employee's request.
- 11. The request status is updated to "Pending."
- 12. The manager responds to the email by clicking on a link to approve or reject the request.
+<img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Flow%20chart/Screenshot%202024-12-18%20at%2018.46.12.png" width="85%"/>
 
-#### Alternative Flows
-1. **Withdraw Request**: Remove pending request, notify the manager.
-2. **Cancel Approved Request**: Restore vacation balance, notify the manager.
-3. **Edit Pending Request**: Update details, validate changes.
-
----
-
-### Flow Diagrams
-
-#### Main Flow
-<img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Flow%20chart/Use%20case%20flow%20chart.png" width="75%" />
-
-#### Alternative Flows
-<p float="left">
-  <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Flow%20chart/Withdraw%20request%20flow%20chart.png" width="30%" />
-  <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Flow%20chart/Cancel%20request%20flow%20chart.png" width="30%" />
-  <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Flow%20chart/Edit%20request%20flow%20chart.png" width="30%" />
-</p>
+ ---
+ 
+### Use Cases
+- [Manage vacation time](https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Use%20Cases/submit-vacation-request.md)
+- [Edit Pending Vacation time request](https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Use%20Cases/Edit-vacation-request.md)
+- [Cancel vacation request](https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Use%20Cases/cancel-vacation-request.md)
+- [Withdraw pending vacation time request](https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Use%20Cases/withdraw-vacation-request.md)
 
 ---
 
@@ -124,145 +153,20 @@ The Vacation System Idea is presented in [The Object Oriented Analysis And Desig
 
 ---
 
-## Database Design
+## Data Model
 
 | <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/ERD%20Diagram.png" />|
 | --------------------------------------------------------------- |
 | **Entity-Relationship Diagram**|
 
-| <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Database%20Diagrams/Entities.png" width="75%" />|
-| --------------------------------------------------------------- |
-| **Entities Diagram** |
+
 
 ---
 
-## Pseudocode
+## UI
 
-### **Vacation Request**
+---
 
-#### **Create Vacation Request**
-```plaintext
-FUNCTION CreateVacationRequest(employeeID, startDate, endDate, title, description, categoryID):
-
-    // Step 1: Authentication Check
-    IF NOT IsAuthenticated(employeeID) THEN
-        RETURN "Error: User not authenticated"
-    END IF
-    
-    // Step 2: Check Employee's Available Vacation Balance
-    balance = CheckVacationBalance(request.employeeID, request.categoryID)
-    
-    // Step 3: Validate if the employee has sufficient balance for the request
-    IF balance < CalculateDays(startDate, endDate) THEN
-        RETURN "Error: Insufficient balance"
-    END IF
-
-    // Step 4: Generate a unique Request ID for the new vacation request
-    requestID = GenerateNewRequestID()
-
-    // Step 5: Save the new vacation request to the database
-    SaveToDatabase("VacationRequest", {
-        "requestID": requestID,
-        "employeeID": employeeID,
-        "startDate": startDate,
-        "endDate": endDate,
-        "title": title,
-        "description": description,
-        "status": "Pending",  
-        "categoryID": categoryID
-    })
-
-    // Step 6: Notify the manager about the new vacation request for approval
-    NotifyManager(employeeID, requestID)
-
-    // Step 7: Return a success message
-    RETURN "Vacation request submitted successfully"
-END FUNCTION
-
-```
-#### **Edit a Pending Vacation Request**
-```plaintext
-FUNCTION EditVacationRequest(requestID, newStartDate, newEndDate, newTitle, newDescription):
-
-    // Step 1: Retrieve the current request details
-    currentRequest = GetRequestFromDatabase(requestID)
-    IF currentRequest.status != "Pending" THEN
-        RETURN "Error: Only pending requests can be edited"
-    END IF
-
-    // Step 2: Check for sufficient vacation balance after the new dates
-    balance = CheckVacationBalance(currentRequest.employeeID, currentRequest.categoryID)
-    IF balance < CalculateDays(request.newStartDate, request.newEndDate) THEN
-        RETURN "Error: Insufficient balance"
-    END IF
-
-    // Step 3: Update the request with new details
-    currentRequest.startDate = newStartDate
-    currentRequest.endDate = newEndDate
-    currentRequest.title = newTitle
-    currentRequest.description = newDescription
-
-    // Step 4: Save the updated request to the database
-    SaveToDatabase("VacationRequest", currentRequest)
-
-    // Step 5: Notify the manager about the edit
-    NotifyManager(currentRequest.employeeID, requestID)
-
-    // Step 6: Return a success message
-    RETURN "Vacation request updated successfully"
-END FUNCTION
-```
-
-#### **Cancel an Approved Vacation Request**
-```plaintext
-FUNCTION CancelVacationRequest(requestID):
-
-    // Step 1: Retrieve the current request details
-    currentRequest = GetRequestFromDatabase(requestID)
-    IF currentRequest.status != "Approved" THEN
-        RETURN "Error: Only approved requests can be canceled"
-    END IF
-
-    // Step 2: Restore the employee's vacation balance
-    balanceRestored = RestoreVacationBalance(currentRequest.employeeID, currentRequest.categoryID, CalculateDays(currentRequest.startDate, currentRequest.endDate))
-
-    // Step 3: Update request status to "Canceled"
-    currentRequest.status = "Canceled"
-    
-    // Step 4: Save the updated request to the database
-    SaveToDatabase("VacationRequest", currentRequest)
-
-    // Step 5: Notify the manager about the cancellation
-    NotifyManager(currentRequest.employeeID, requestID)
-
-    // Step 6: Return a success message
-    RETURN "Vacation request canceled and balance restored"
-END FUNCTION
-```
-#### **Withdraw Pending Vacation Request**
-```plaintext
-FUNCTION WithdrawVacationRequest(requestID):
-
-    // Step 1: Retrieve the current request details
-    currentRequest = GetRequestFromDatabase(requestID)
-    IF currentRequest.status != "Pending" THEN
-        RETURN "Error: Only pending requests can be withdrawn"
-    END IF
-
-    // Step 2: Update request status to "Withdrawn"
-    currentRequest.status = "Withdrawn"
-    
-    // Step 3: Save the updated request to the database
-    SaveToDatabase("VacationRequest", currentRequest)
-
-    // Step 4: Notify the manager about the withdrawal
-    NotifyManager(currentRequest.employeeID, requestID)
-
-    // Step 5: Return a success message
-    RETURN "Vacation request withdrawn successfully"
-END FUNCTION
-
-```
 
 ## Tools Used
 - [Visual Studio Code](https://code.visualstudio.com/)
