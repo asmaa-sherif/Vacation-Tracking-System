@@ -147,7 +147,7 @@ Give individual employees the capability and responsibility to manage this parti
 ---
 
 ### Sequence Diagram
-| <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Sequence%20diagram.png" width="100%" />
+| <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Sequence%20diagram.png" width="85%" />
 | --------------------------------------------------------------- |
 | **Sequence Diagram** |
 
@@ -155,7 +155,7 @@ Give individual employees the capability and responsibility to manage this parti
 
 ## Data Model
 
-| <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/ERD.png"  width="100%" />|
+| <img src="https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/ERD.png"  width="85%" />|
 | --------------------------------------------------------------- |
 | **Entity-Relationship Diagram**|
 
