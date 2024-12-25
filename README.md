@@ -5,7 +5,7 @@ The Vacation System Idea is presented in [The Object Oriented Analysis And Desig
 ---
 
 ## Table of Contents
-1. [Overview](#overview)
+- [Overview](#overview)
    - [Domain](#domain)
    - [Vision](#vision)
    - [Goals](#goals)
@@ -13,17 +13,18 @@ The Vacation System Idea is presented in [The Object Oriented Analysis And Desig
    - [Non-Functional Requirements](#non-functional-requirements)
    - [Constraints](#constraints)
    - [Assumptions](#assumptions)
-   - [Actors](#actors)
    - [Use Cases](#use-cases)
-   - [Flow Charts](#flow-charts)
-   - [Use Cases Examples](#use-cases-examples)
-2. [Data Model](#data-model)
-3. [UI](#ui)
-4. [Tools Used](#tools-used)
+   - [Actors](#actors)
+   - [Flow Diagram](#flow-diagram)
+   - [Alternative Use Cases](#alternative-use-cases)
+- [Sequence Diagram](#sequence-diagram)
+- [Data Model](#data-model)
+- [UI](#ui)
+- [Tools Used](#tools-used)
 
 ---
 
-## Requirements
+## Overview
 
 ### Domain
 Managers struggle to effectively manage and stay aware of their employees' vacation schedules.
@@ -138,7 +139,7 @@ Give individual employees the capability and responsibility to manage this parti
 
  ---
  
-### Use Cases
+### Alternative Use Cases
 - [Manage vacation time](https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Use%20Cases/submit-vacation-request.md)
 - [Edit Pending Vacation time request](https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Use%20Cases/Edit-vacation-request.md)
 - [Cancel vacation request](https://github.com/asmaa-sherif/Vacation-Tracking-System/blob/main/Use%20Cases/cancel-vacation-request.md)
